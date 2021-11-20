@@ -3,24 +3,25 @@ import ReactDOM from 'react-dom';
 import 'normalize.css';
 import './index.css';
 
-function Card({ card, index, markCard }) {
+function Card({ card, index, markCard, deleteCard }) {
   return (
-    <div className='card' style={{ backgroundColor: card.isDone ? "#59BA50" : "#ba5050" }} >
+    <div className='card' style={{ backgroundColor: card.isDone ? "#59BA50" : "#ba5050" }}>
       <div className='card__text' onClick={() => { markCard(index) }}>{card.text}</div>
-      <div className='card__delete-btn'>+</div>
+      <div className='card__delete-btn' onClick={() => { deleteCard(index) }}>+</div>
       <div className='card__status'>{card.isDone ? 'completed' : 'not completed'}</div>
     </div>
   );
 }
 
-function CardsBoard({ cards, markCard }) {
+function CardsBoard({ cards, markCard, deleteCard }) {
   return (
     <div className='cards-inner'>
       <div className='cards'>
         {cards.map((card, index) =>
           <Card card={card}
             index={index}
-            markCard={markCard} />
+            markCard={markCard}
+            deleteCard={deleteCard} />
         )}
       </div>
     </div>
@@ -66,18 +67,22 @@ function App() {
     setCards(newCards);
   };
 
-  //delete card
-  //change status (mark)
   const markCard = index => {
     const newCards = [...cards];
     newCards[index].isDone = !newCards[index].isDone;
     setCards(newCards);
   };
 
+  const deleteCard = index => {
+    const newCards = [...cards];
+    newCards.splice(index, 1);
+    setCards(newCards);
+  };
+
   return (
     <div className='app'>
       <AddTaskPanel addCard={addCard} />
-      <CardsBoard cards={cards} markCard={markCard} />
+      <CardsBoard cards={cards} markCard={markCard} deleteCard={deleteCard} />
     </div>
   );
 }
