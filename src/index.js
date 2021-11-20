@@ -1,55 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'normalize.css';
 import './index.css';
 
-class Card extends React.Component {
-  render() {
-    return (
-      <div className='card'>
-        <div className='card__text'>{this.props.text}</div>
-        <div className='card__delete-btn'>+</div>
-        <div className='card__status'>not completed</div>
-      </div>
-    );
-  }
-}
-class CardsBoard extends React.Component {
-  render() {
-    return (
-      <div className='cards-inner'>
-        <div className='cards'>
-          <Card text="Text of task #1" />
-          <Card text="Text of task #2" />
-          <Card text="Text of task #3" />
-        </div>
-      </div>
-    );
-  }
+function Card({ card }) {
+  return (
+    <div className='card' style={{ backgroundColor: card.isDone ? "#59BA50" : "#ba5050" }}>
+      <div className='card__text'>{card.text}</div>
+      <div className='card__delete-btn'>+</div>
+      <div className='card__status'>{card.isDone ? 'completed' : 'not completed'}</div>
+    </div>
+  );
 }
 
-class AddTaskPanel extends React.Component {
-  render() {
-    return (
-      <div className='add-card'>
-        <div className='add-card__inner'>
+function CardsBoard({ cards }) {
+  return (
+    <div className='cards-inner'>
+      <div className='cards'>
+        {cards.map(card => <Card card={card} />)}
+      </div>
+    </div>
+  );
+}
+
+function AddTaskPanel() {
+  return (
+    <div className='add-card'>
+      <div className='add-card__inner'>
+        <form>
           <input className='add-card__input-field' type='text' placeholder='enter new task...' />
-          <button className='add-card__btn'>+</button>
-        </div>
+          <input className='add-card__btn' type="submit" value="+" />
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className='app'>
-        <AddTaskPanel />
-        <CardsBoard />
-      </div>
-    );
-  }
+function App() {
+  const [cards, setCards] = useState([
+    {
+      text: "This is a simple todo",
+      isDone: false
+    }
+  ]);
+
+  return (
+    <div className='app'>
+      <AddTaskPanel />
+      <CardsBoard cards={cards} />
+    </div>
+  );
 }
 
 ReactDOM.render(
