@@ -3,21 +3,25 @@ import ReactDOM from 'react-dom';
 import 'normalize.css';
 import './index.css';
 
-function Card({ card }) {
+function Card({ card, index, markCard }) {
   return (
-    <div className='card' style={{ backgroundColor: card.isDone ? "#59BA50" : "#ba5050" }}>
-      <div className='card__text'>{card.text}</div>
+    <div className='card' style={{ backgroundColor: card.isDone ? "#59BA50" : "#ba5050" }} >
+      <div className='card__text' onClick={() => { markCard(index) }}>{card.text}</div>
       <div className='card__delete-btn'>+</div>
       <div className='card__status'>{card.isDone ? 'completed' : 'not completed'}</div>
     </div>
   );
 }
 
-function CardsBoard({ cards }) {
+function CardsBoard({ cards, markCard }) {
   return (
     <div className='cards-inner'>
       <div className='cards'>
-        {cards.map(card => <Card card={card} />)}
+        {cards.map((card, index) =>
+          <Card card={card}
+            index={index}
+            markCard={markCard} />
+        )}
       </div>
     </div>
   );
@@ -62,10 +66,18 @@ function App() {
     setCards(newCards);
   };
 
+  //delete card
+  //change status (mark)
+  const markCard = index => {
+    const newCards = [...cards];
+    newCards[index].isDone = !newCards[index].isDone;
+    setCards(newCards);
+  };
+
   return (
     <div className='app'>
       <AddTaskPanel addCard={addCard} />
-      <CardsBoard cards={cards} />
+      <CardsBoard cards={cards} markCard={markCard} />
     </div>
   );
 }
