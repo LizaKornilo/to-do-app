@@ -3,38 +3,56 @@ import ReactDOM from 'react-dom';
 import 'normalize.css';
 import './index.css';
 
-const element = (
-  <div className='app'>
-    <div class='add-card'>
-      <div class='add-card__inner'>
-        <input type='text' class='add-card__input-field' placeholder='enter new task...' />
-        <button class='add-card__btn'>+</button>
+class Card extends React.Component {
+  render() {
+    return (
+      <div className='card'>
+        <div className='card__text'>{this.props.text}</div>
+        <div className='card__delete-btn'>+</div>
+        <div className='card__status'>not completed</div>
       </div>
-    </div>
+    );
+  }
+}
+class CardsBoard extends React.Component {
+  render() {
+    return (
+      <div className='cards-inner'>
+        <div className='cards'>
+          <Card text="Text of task #1" />
+          <Card text="Text of task #2" />
+          <Card text="Text of task #3" />
+        </div>
+      </div>
+    );
+  }
+}
 
-    <div class='cards-inner'>
-      <ul class='cards'>
-        <li class='card'>
-          <div class='card__text'>Text of task #1</div>
-          <div class='card__delete-btn'>+</div>
-          <div class='card__status'>not completed</div>
-        </li>
-        <li class='card'>
-          <div class='card__text'>Text of task #2</div>
-          <div class='card__delete-btn'>+</div>
-          <div class='card__status'>not completed</div>
-        </li>
-        <li class='card'>
-          <div class='card__text'>Text of task #3</div>
-          <div class='card__delete-btn'>+</div>
-          <div class='card__status'>not completed</div>
-        </li>
-      </ul>
-    </div>
-  </div>
-);
+class AddTaskPanel extends React.Component {
+  render() {
+    return (
+      <div className='add-card'>
+        <div className='add-card__inner'>
+          <input className='add-card__input-field' type='text' placeholder='enter new task...' />
+          <button className='add-card__btn'>+</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div className='app'>
+        <AddTaskPanel />
+        <CardsBoard />
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
-  element,
+  <App />,
   document.getElementById('root')
 );
