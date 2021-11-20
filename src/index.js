@@ -23,12 +23,25 @@ function CardsBoard({ cards }) {
   );
 }
 
-function AddTaskPanel() {
+function AddTaskPanel({ addCard }) {
+  const [value, setValue] = React.useState("");
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  }
+
+  const handleSubmit = event => {
+    if (!value) return;
+    addCard(value);
+    setValue("");
+    event.preventDefault();
+  }
+
   return (
     <div className='add-card'>
       <div className='add-card__inner'>
-        <form>
-          <input className='add-card__input-field' type='text' placeholder='enter new task...' />
+        <form onSubmit={handleSubmit}>
+          <input className='add-card__input-field' value={value} onChange={handleChange} type='text' placeholder='enter new task...' />
           <input className='add-card__btn' type="submit" value="+" />
         </form>
       </div>
@@ -44,9 +57,14 @@ function App() {
     }
   ]);
 
+  const addCard = text => {
+    const newCards = [...cards, { text: text, isDone: false }];
+    setCards(newCards);
+  };
+
   return (
     <div className='app'>
-      <AddTaskPanel />
+      <AddTaskPanel addCard={addCard} />
       <CardsBoard cards={cards} />
     </div>
   );
