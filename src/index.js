@@ -43,14 +43,10 @@ function AddTaskPanel({ addCard }) {
   }
 
   return (
-    <div className='add-card'>
-      <div className='add-card__inner'>
-        <form onSubmit={handleSubmit}>
-          <input className='add-card__input-field' value={value} onChange={handleChange} type='text' placeholder='enter new task...' />
-          <input className='add-card__btn' type="submit" value="+" />
-        </form>
-      </div>
-    </div>
+    <form className='add-card' onSubmit={handleSubmit}>
+      <input className='add-card__input-field' value={value} onChange={handleChange} type='text' placeholder='enter new task...' />
+      <input className='add-card__btn' type="submit" value="+" />
+    </form>
   );
 }
 
