@@ -8,9 +8,9 @@ import { ThemeContext, themes } from './theme-context';
 function Card({ card, index, markCard, deleteCard }) {
   const theme = useContext(ThemeContext);
   return (
-    <div className='card' style={{ backgroundColor: card.isDone ? theme.cardBgGreen : theme.cardBgRed }}>
-      <div className='card__text' onClick={() => { markCard(index) }} style={{ color: theme.textColor }}>{card.text}</div>
-      <div className='card__delete-btn' onClick={() => { deleteCard(index) }} style={{ background: theme.delBtnColor, color: theme.delBtnTextColor }}>+</div>
+    <div className='card' onClick={() => { markCard(index) }} style={{ backgroundColor: card.isDone ? theme.cardBgGreen : theme.cardBgRed }}>
+      <div className='card__text' style={{ color: theme.textColor }}>{card.text}</div>
+      <div className='card__delete-btn' onClick={(evt) => { evt.stopPropagation(); deleteCard(index) }} style={{ backgroundColor: theme.delBtnColor, color: theme.delBtnTextColor }}>+</div>
       <div className='card__status' style={{ color: theme.textColor }}>{card.isDone ? 'completed' : 'not completed'}</div>
     </div>
   );
@@ -48,16 +48,16 @@ function AddTaskPanel({ addCard }) {
 
   return (
     <form className='add-card' onSubmit={handleSubmit}>
-      <input className='add-card__input-field' value={value} onChange={handleChange} type='text' placeholder='enter new task...' style={{ background: theme.inputColor, color: theme.textColor }} />
-      <input className='add-card__btn' type="submit" value="+" style={{ background: theme.addBtnColor, color: theme.textColor }} />
+      <input className='add-card__input-field' value={value} onChange={handleChange} type='text' placeholder='enter new task...' style={{ backgroundColor: theme.inputColor, color: theme.textColor }} />
+      <input className='add-card__btn' type="submit" value="+" style={{ backgroundColor: theme.addBtnColor, color: theme.textColor }} />
     </form>
   );
 }
 
 function ThemeCheckbox({ changeTheme }) {
   return (
-    <div className="themeCheckbox" >
-      <div className="container">
+    <div className="container">
+      <div className="themeCheckbox" >
         <input className="check" type="checkbox" id="newchec" onChange={() => { changeTheme() }} />
         <label htmlFor="newchec"></label>
       </div>

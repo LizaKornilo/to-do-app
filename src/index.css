@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+* {
+  transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+}
+
 body,
 html {
   min-width: 100%;
@@ -41,6 +45,7 @@ ul {
 .check:not(checked) + label {
   position: relative;
   padding: 0;
+  margin-right: 48px;
 }
 .check:not(checked) + label:before {
   content: "";
@@ -122,6 +127,7 @@ ul {
   position: relative;
   box-shadow: 2px 2px 2px rgb(41, 41, 41);
   margin: 8px;
+  cursor: pointer;
 }
 
 .card__text {
@@ -136,7 +142,6 @@ ul {
   line-height: 21px;
   word-wrap: break-word;
   overflow: auto;
-  cursor: pointer;
 }
 
 .card__text::-webkit-scrollbar {
