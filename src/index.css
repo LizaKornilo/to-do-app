@@ -30,6 +30,10 @@ ul {
   text-align: right;
 }
 
+.check + label {
+  cursor: pointer;
+}
+
 .check:not(checked) {
   position: absolute;
   opacity: 0;
@@ -101,6 +105,7 @@ ul {
   border: 0px;
   line-height: 30px;
   box-shadow: 2px 2px 2px rgb(41, 41, 41);
+  cursor: pointer;
 }
 
 .cards {
@@ -131,6 +136,7 @@ ul {
   line-height: 21px;
   word-wrap: break-word;
   overflow: auto;
+  cursor: pointer;
 }
 
 .card__text::-webkit-scrollbar {
@@ -149,6 +155,7 @@ ul {
   position: absolute;
   right: 12px;
   top: 12px;
+  cursor: pointer;
 }
 
 .card__status {
