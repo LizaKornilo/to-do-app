@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { themes } from '../theme-context.js';
-import { ThemeContext } from '../theme-context.js';
+import { themes } from '../contexts/theme-context.js';
+import { ThemeContext } from '../contexts/theme-context.js';
 
 import { AddTaskPanel } from './AddTaskPanel';
 import { ThemeCheckbox } from './ThemeCheckbox';
