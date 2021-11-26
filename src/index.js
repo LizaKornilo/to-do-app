@@ -40,9 +40,11 @@ function AddTaskPanel({ addCard }) {
   }
 
   const handleSubmit = event => {
-    if (!value) return;
-    addCard(value);
-    setValue("");
+    if (!value) { }
+    else {
+      addCard(value);
+      setValue("");
+    }
     event.preventDefault();
   }
 
