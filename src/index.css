@@ -161,6 +161,7 @@ ul {
   right: 12px;
   top: 12px;
   cursor: pointer;
+  user-select: none;
 }
 
 .card__status {
@@ -169,4 +170,5 @@ ul {
   position: absolute;
   right: 12px;
   bottom: 12px;
+  user-select: none;
 }
