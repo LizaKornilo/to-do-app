@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { themes } from '../contexts/theme-context.js';
 import { ThemeContext } from '../contexts/theme-context.js';
 import { AddTaskPanel } from './AddTaskPanel';
@@ -8,13 +8,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 export function App() {
   const [theme, setTheme] = useState(themes.light);
-  const [cards, setCards] = useState([
-    {
-      id: uuidv4(),
-      text: "This is a simple todo",
-      isDone: false
-    }
-  ]);
+  const [cards, setCards] = useState(
+    (localStorage.getItem('todos')) ? JSON.parse(localStorage.getItem('todos')) : [
+      {
+        id: uuidv4(),
+        text: "This is a simple todo",
+        isDone: false
+      }
+    ]
+  );
 
   const changeTheme = () => {
     setTheme(theme === themes.dark
@@ -24,7 +26,6 @@ export function App() {
 
   const addCard = text => {
     setCards([...cards, { id: uuidv4(), text: text, isDone: false }]);
-    //localStorage.setItem('card', JSON.stringify({text: text, isDone: false}));
   };
 
   const markCard = index => {
@@ -39,6 +40,10 @@ export function App() {
     newCards.splice(index, 1);
     setCards(newCards);
   };
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(cards));
+  });
 
   return (
     <ThemeContext.Provider value={theme} >
