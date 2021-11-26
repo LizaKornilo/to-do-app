@@ -171,4 +171,14 @@ ul {
   right: 12px;
   bottom: 12px;
   user-select: none;
+  visibility: hidden;
+}
+
+.card_timestamp{
+  text-align: right;
+  font-size: 14px;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  user-select: none;
 }

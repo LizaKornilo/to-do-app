@@ -13,7 +13,8 @@ export function App() {
       {
         id: uuidv4(),
         text: "This is a simple todo",
-        isDone: false
+        isDone: false,
+        timestamp: new Date(),
       }
     ]
   );
@@ -25,7 +26,7 @@ export function App() {
   };
 
   const addCard = text => {
-    setCards([...cards, { id: uuidv4(), text: text, isDone: false }]);
+    setCards([...cards, { id: uuidv4(), text: text, isDone: false, timestamp: new Date() }]);
   };
 
   const markCard = index => {
