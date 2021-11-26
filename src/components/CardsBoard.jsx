@@ -6,7 +6,7 @@ export function CardsBoard({ cards, markCard, deleteCard }) {
     <div className='container'>
       <div className='cards'>
         {cards.map((card, index) =>
-          <Card card={card}
+          <Card key={card.id} card={card}
             index={index}
             markCard={markCard}
             deleteCard={deleteCard} />

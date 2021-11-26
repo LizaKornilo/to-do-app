@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { themes } from '../contexts/theme-context.js';
 import { ThemeContext } from '../contexts/theme-context.js';
-
 import { AddTaskPanel } from './AddTaskPanel';
 import { ThemeCheckbox } from './ThemeCheckbox';
 import { CardsBoard } from './CardsBoard';
+import { v4 as uuidv4 } from 'uuid';
 
 export function App() {
   const [theme, setTheme] = useState(themes.light);
   const [cards, setCards] = useState([
     {
+      id: uuidv4(),
       text: "This is a simple todo",
       isDone: false
     }
@@ -22,7 +23,8 @@ export function App() {
   };
 
   const addCard = text => {
-    setCards([...cards, { text: text, isDone: false }]);
+    setCards([...cards, { id: uuidv4(), text: text, isDone: false }]);
+    //localStorage.setItem('card', JSON.stringify({text: text, isDone: false}));
   };
 
   const markCard = index => {
