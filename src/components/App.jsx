@@ -44,7 +44,8 @@ export function App() {
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(cards));
-  });
+    console.log("use eff");
+  }, [cards]);
 
   return (
     <ThemeContext.Provider value={theme} >
