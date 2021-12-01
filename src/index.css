@@ -6,6 +6,7 @@
 
 * {
   transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+  user-select: none;
 }
 
 body,
@@ -161,7 +162,6 @@ ul {
   right: 12px;
   top: 12px;
   cursor: pointer;
-  user-select: none;
 }
 
 .card__status {
@@ -170,7 +170,6 @@ ul {
   position: absolute;
   right: 12px;
   bottom: 12px;
-  user-select: none;
   visibility: hidden;
 }
 
@@ -180,5 +179,4 @@ ul {
   position: absolute;
   right: 12px;
   bottom: 12px;
-  user-select: none;
 }
