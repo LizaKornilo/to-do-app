@@ -12,7 +12,7 @@ export function App() {
     (localStorage.getItem('todos')) ? JSON.parse(localStorage.getItem('todos')) : [
       {
         id: uuidv4(),
-        text: "This is a simple todo",
+        name: "This is a simple todo",
         isDone: false,
         timestamp: new Date(),
       }
@@ -25,13 +25,13 @@ export function App() {
       : themes.dark);
   };
 
-  const addCard = text => {
-    setCards([...cards, { id: uuidv4(), text: text, isDone: false, timestamp: new Date() }]);
+  const addCard = name => {
+    setCards([...cards, { id: uuidv4(), name: name, isDone: false, timestamp: new Date() }]);
   };
 
-  const markCard = index => {
+  const markCard = (index, isCompleted) => {
     setCards(cards.map((item, i) => {
-      if (i === index) item.isDone = !item.isDone;
+      if (i === index) item.isDone = isCompleted;
       return item;
     }))
   };
@@ -40,6 +40,13 @@ export function App() {
     const newCards = [...cards];
     newCards.splice(index, 1);
     setCards(newCards);
+  };
+
+  const renameCard = (index, newName) => {
+    setCards(cards.map((item, i) => {
+      if (i === index) item.name = newName;
+      return item;
+    }))
   };
 
   useEffect(() => {
@@ -51,7 +58,7 @@ export function App() {
       <div className='app' style={{ backgroundColor: theme.appBg }}>
         <ThemeCheckbox changeTheme={changeTheme} />
         <AddTaskPanel addCard={addCard} />
-        <CardsBoard cards={cards} markCard={markCard} deleteCard={deleteCard} />
+        <CardsBoard cards={cards} markCard={markCard} renameCard={renameCard} deleteCard={deleteCard} />
       </div>
     </ThemeContext.Provider>
   );

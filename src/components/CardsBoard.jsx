@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from './Card';
 
-export function CardsBoard({ cards, markCard, deleteCard }) {
+export function CardsBoard({ cards, markCard, renameCard, deleteCard }) {
   return (
     <div className='container'>
       <div className='cards'>
@@ -9,7 +9,8 @@ export function CardsBoard({ cards, markCard, deleteCard }) {
           <Card key={card.id} card={card}
             index={index}
             markCard={markCard}
-            deleteCard={deleteCard} />
+            renameCard={renameCard}
+            deleteCard={deleteCard}/>
         )}
       </div>
     </div>
