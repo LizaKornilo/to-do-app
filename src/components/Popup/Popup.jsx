@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./popup.css";
 
 function Popup({ trigger, setTrigger, card, updateCard }) {
-  const [name, setName] = React.useState("");
+  const [name, setName] = useState(card.name);
+  const [isDone, setIsDone] = useState(card.isDone);
 
   const cardNameChange = event => {
     setName(event.target.value);
   }
 
+  const isDoneChange = event => {
+    setIsDone(event.target.checked);
+  }
+
   const handleSubmit = event => {
-    updateCard(name)
+    updateCard(name, isDone)
     setTrigger(false)
 
     event.preventDefault();
@@ -22,9 +27,13 @@ function Popup({ trigger, setTrigger, card, updateCard }) {
           &#10006;
         </button>
 
-        <form onSubmit={handleSubmit}>
-          <input className='popup__card-name' defaultValue={card.name} onChange={cardNameChange} type='text' placeholder='enter task name...' required
-            style={{ contenteditable: "true" }} />
+        <form className="popup-form" onSubmit={handleSubmit}>
+          <input className='popup__card-name' value={name} onChange={cardNameChange} type='text' placeholder='enter task name...' required />
+          <div className="popup__is-done" >
+            <input className="is-one" type="checkbox" id="ch" checked={isDone} onChange={isDoneChange} />
+            <label htmlFor="ch">is completed</label>
+          </div>
+          <div className="popup__timestamp">{card.timestamp} </div>
           <input className='popup__submit-btn' type="submit" value="ok" />
         </form>
 

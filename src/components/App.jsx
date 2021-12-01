@@ -7,6 +7,10 @@ import { CardsBoard } from './CardsBoard';
 import { v4 as uuidv4 } from 'uuid';
 
 export function App() {
+  const getDateString = (date) => {
+    return `${date.getDate()}. ${date.getMonth() + 1}\u00A0\u00A0${date.getHours()}:${date.getMinutes()}`;
+  };
+
   const [theme, setTheme] = useState(themes.light);
   const [cards, setCards] = useState(
     (localStorage.getItem('todos')) ? JSON.parse(localStorage.getItem('todos')) : [
@@ -14,7 +18,7 @@ export function App() {
         id: uuidv4(),
         name: "This is a simple todo",
         isDone: false,
-        timestamp: new Date(),
+        timestamp: getDateString(new Date()),
       }
     ]
   );
@@ -26,7 +30,7 @@ export function App() {
   };
 
   const addCard = name => {
-    setCards([...cards, { id: uuidv4(), name: name, isDone: false, timestamp: new Date() }]);
+    setCards([...cards, { id: uuidv4(), name: name, isDone: false, timestamp: getDateString(new Date()) }]);
   };
 
   const markCard = (index, isCompleted) => {
