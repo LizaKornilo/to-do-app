@@ -1,14 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { ThemeContext } from '../contexts/theme-context';
 import Popup from './Popup/Popup';
+import { getDateString } from '../utils/dateFormatter.js';
+import EditCardForm from './EditCardForm/EditCardForm';
 
-export function Card({ card, index, markCard, renameCard, deleteCard }) {
+export function Card({ card, index, updateCard, deleteCard }) {
   const theme = useContext(ThemeContext);
 
   const [popupIsOpen, setPopupIsOpen] = useState(false);
-  const updateCard = (nameValue, isDone) => {
-    renameCard(index, nameValue);
-    markCard(index, isDone);
+  const updateOpenCard = (nameValue, isDone) => {
+    updateCard(index, nameValue, isDone);
   }
 
   return (
@@ -17,11 +18,11 @@ export function Card({ card, index, markCard, renameCard, deleteCard }) {
         <div className='card__text' style={{ color: theme.textColor }}>{card.name}</div>
         <div className='card__delete-btn' onClick={(evt) => { evt.stopPropagation(); deleteCard(index) }} style={{ backgroundColor: theme.delBtnColor, color: theme.delBtnTextColor }}>+</div>
         <div className='card__status' style={{ color: theme.textColor }}>{card.isDone ? 'completed' : 'not completed'}</div>
-        <div className="card_timestamp" style={{ color: theme.textColor }}> {(card.timestamp)}</div>
+        <div className="card_timestamp" style={{ color: theme.textColor }}> {(getDateString(new Date(card.timestamp)))}</div>
       </div>
 
-      <Popup trigger={popupIsOpen} setTrigger={setPopupIsOpen} card={card} updateCard={updateCard}>
-        <h3>My popup</h3>
+      <Popup trigger={popupIsOpen} setTrigger={setPopupIsOpen} >
+        <EditCardForm setTrigger={setPopupIsOpen} card={card} updateOpenCard={updateOpenCard} />
       </Popup>
     </>
   );

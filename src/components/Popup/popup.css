@@ -1,4 +1,4 @@
-.popup {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,16 +11,20 @@
   z-index: 5;
 }
 
-.popup-inner {
+.popup {
   width: 480px;
   background-color: #fff;
   padding: 15px;
   border-radius: 10px;
   position: relative;
   caret-color: transparent;
+  min-height: 54px;
 }
 
 .popup__close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
   height: 24px;
   width: 24px;
   border: 0px;
@@ -29,57 +33,6 @@
   font-size: 24px;
   text-align: center;
   line-height: 24px;
-  position: absolute;
-  right: 15px;
-  top: 15px;
   cursor: pointer;
-}
-
-.popup__card-name {
-  border: none;
-  border-radius: 5px;
-  width: 415px;
-  min-height: 28px;
-  font-size: 24px;
-  font-family: Roboto;
-  overflow: hidden;
-  margin-bottom: 30px;
-  caret-color: #000;
-  resize: none;
-}
-
-.popup__is-done {
-  display: flex;
-  align-items: center;
-}
-.is-done + label {
-  cursor: pointer;
-  margin-left: 20px;
-  font-size: 18px;
-}
-.is-done {
-  height: 24px;
-  width: 24px;
-}
-
-.popup__timestamp {
-  position: relative;
-  display: inline-block;
-  font-size: 14px;
-  margin-top: 30px;
-  user-select: none;
-}
-
-.popup__submit-btn {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  width: 90px;
-  height: 30px;
-  font-size: 18px;
-  border: none;
-  box-shadow: 2px 2px 2px rgb(41, 41, 41);
-  border-radius: 15px;
-  align-items: center;
-  cursor: pointer;
+  z-index: 6;
 }

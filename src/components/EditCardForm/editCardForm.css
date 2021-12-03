@@ -1,0 +1,52 @@
+.edit-card-form {
+  position: relative;
+}
+
+.form__card-name {
+  border: none;
+  border-radius: 5px;
+  width: 415px;
+  min-height: 28px;
+  font-size: 24px;
+  font-family: Roboto;
+  overflow: hidden;
+  margin-bottom: 30px;
+  caret-color: #000;
+  resize: none;
+}
+
+.form__is-done {
+  display: flex;
+  align-items: center;
+}
+.is-done + label {
+  cursor: pointer;
+  margin-left: 20px;
+  font-size: 18px;
+}
+.is-done {
+  height: 24px;
+  width: 24px;
+}
+
+.form__timestamp {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 30px;
+  margin-top: 30px;
+  user-select: none;
+}
+
+.form__submit-btn {
+  position: absolute;
+  right: 0;
+  width: 90px;
+  height: 30px;
+  margin-top: 30px;
+  font-size: 18px;
+  border: none;
+  box-shadow: 2px 2px 2px rgb(41, 41, 41);
+  border-radius: 15px;
+  align-items: center;
+  cursor: pointer;
+}
