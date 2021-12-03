@@ -8,8 +8,8 @@ export function Card({ card, index, updateCard, deleteCard }) {
   const theme = useContext(ThemeContext);
 
   const [popupIsOpen, setPopupIsOpen] = useState(false);
-  const updateOpenCard = (nameValue, isDone) => {
-    updateCard(index, nameValue, isDone);
+  const updateOpenCard = (newCard) => {
+    updateCard(index, newCard);
   }
 
   return (

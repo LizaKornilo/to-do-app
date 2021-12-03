@@ -4,7 +4,7 @@ import { getDateString } from "../../utils/dateFormatter";
 import './editCardForm.css'
 
 function EditCardForm({ setTrigger, card, updateOpenCard }) {
-  const [newCard, setNewCard] = useState({ name: card.name, isDone: card.isDone });
+  const [newCard, setNewCard] = useState({ ...card });
 
   const handleInputChange = event => {
     const target = event.target;
@@ -14,7 +14,7 @@ function EditCardForm({ setTrigger, card, updateOpenCard }) {
   }
 
   const handleSubmit = event => {
-    updateOpenCard(newCard.name, newCard.isDone);
+    updateOpenCard(newCard);
     setTrigger(false);
     event.preventDefault();
   }
