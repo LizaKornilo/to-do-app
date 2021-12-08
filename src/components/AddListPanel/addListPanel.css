@@ -1,0 +1,26 @@
+.add-list-btn {
+  width: 240px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 10px;
+  box-shadow: 2px 2px 2px rgb(41, 41, 41);
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-list-form {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.add-list-form__input-field {
+  width: 172px;
+}
+
+.add-list-form__cancel-btn {
+  transform: rotate(45deg);
+}

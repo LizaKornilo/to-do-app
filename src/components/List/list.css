@@ -1,0 +1,31 @@
+.list {
+  width: 240px;
+  height: 48px;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 2px 2px 2px rgb(41, 41, 41);
+  position: relative;
+  cursor: pointer;
+}
+
+.list + .list {
+  margin-top: 8px;
+}
+
+.list__name {
+  font-size: 20px;
+  position: absolute;
+  top: 0px;
+  right: 45px;
+  bottom: 0px;
+  left: 15px;
+  height: 48px;
+  line-height: 48px;
+  overflow: hidden;
+}
+
+.list__delete-btn {
+  transform: rotate(45deg);
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}

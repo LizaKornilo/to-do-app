@@ -1,0 +1,12 @@
+.add-card {
+  margin-bottom: 60px;
+}
+
+.add-card__input-field {
+  width: 460px;
+  vertical-align: top;
+}
+
+.add-card__btn {
+  margin-left: 8px;
+}
